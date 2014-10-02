@@ -18,7 +18,7 @@ var port = process.env.PORT || 8080; 		// set our port
 
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://elevenses:elevenses@ds039860.mongolab.com:39860/elevenses'); // connect to our database
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/'));
 
 var Info     = require('./models/info');
 
