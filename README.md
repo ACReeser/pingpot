@@ -4,10 +4,10 @@ A webserver that reports on the coffee pot's status
 
 ##setup
 ```
-npm install
+standard asp.net web app
 ```
 
 ##running
 ```
-node server.js
+iis express 8
 ```
