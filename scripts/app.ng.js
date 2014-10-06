@@ -5,13 +5,24 @@ angular.module('myApp', [
 //  'ngRoute'
 ])
 .controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
-	$scope.hello = 'hello';
+	$scope.pot = {
+		fillLevel:100
+	};
 	$http.get("/api/infos").then(function(data){
 		$scope.info = angular.fromJson(data.data)[0];
 	});
 	
-	$scope.flip = function(){
-		$http.post("/api/infos/1", {elevenses: $scope.elevenses});
+	$scope.dropLevel = function(){
+		if ($scope.pot.fillLevel == 0)
+			$scope.pot.fillLevel = 100;
+		else
+			$scope.pot.fillLevel = Math.max(0, $scope.pot.fillLevel - 10);
+	}
+	
+	var potModal = '<div id="pot-modal"><button class="btn-success" ng-click="hide()"></button></div>';
+	
+	$scope.potModal = function(){
+		//do things
 	};
 }]);
 //.config(['$routeProvider', function($routeProvider) {
