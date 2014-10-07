@@ -16,7 +16,11 @@
 	width:400px;
 	position:relative;
 }
-
+.pot-svg{
+	position:absolute;
+	top:0;
+	z-index:2;
+}
 .pot-gradient{
 	position:absolute;
 	top:0;
