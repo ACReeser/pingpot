@@ -14,9 +14,9 @@
 			<div class="pot-status-container">
 			</div>
 			<div class="pot" ng-click="dropLevel()">
-				<!--img class="pot-gradient" ng-style="{'height':pot.fillLevel+'%','top':(100 - pot.fillLevel)+'%'}" clip-path="url(#coffeeClip)"-->
+				<!--img class="pot-gradient" ng-style="{'height':pot.fillLevel+'%','top':(100 - pot.fillLevel)+'%'}" clip-path="url(#coffeeClip)"height="750" width="770"-->
 				
-				<svg id="svg2" class="pot-svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="750" width="770" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+				<svg id="svg2" class="pot-svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"viewBox="0 0 770 750">
 
 				 <metadata id="metadata7">
 				  <rdf:RDF>
@@ -28,9 +28,10 @@
 				  </rdf:RDF>
 				 </metadata>
 				 <defs>
-					<linearGradient id="coffee" x1="0%" y1="0%" x2="0%" y2="100%">
-					  <stop offset="0%" style="stop-color:rgb(115, 64, 2);stop-opacity:1" />
-					  <stop offset="{{(100-pot.fillLevel)+'%'}}" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+					<linearGradient id="coffee" x1="0%" y1="100%" x2="0%" y2="0%">
+					  <stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+					  <stop offset="{{(pot.fillLevel)+'%'}}" style="stop-color:rgb(115, 64, 2);stop-opacity:1" />
+					  <stop offset="{{(pot.fillLevel)+'%'}}" style="stop-color:rgb(255,255,255);stop-opacity:1" />
 					</linearGradient>
 				 </defs>
 				 <g id="layer1" stroke-linejoin="miter" transform="translate(82.69768,-151.50289)" stroke-linecap="butt">
