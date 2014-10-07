@@ -6,7 +6,7 @@ angular.module('myApp', [
 ])
 .controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.pot = {
-		fillLevel:90
+		fillLevel:80
 	};
 	$http.get("/api/infos").then(function(data){
 		$scope.info = angular.fromJson(data.data)[0];
@@ -14,7 +14,7 @@ angular.module('myApp', [
 	
 	$scope.dropLevel = function(){
 		if ($scope.pot.fillLevel == 0)
-			$scope.pot.fillLevel = 90;
+			$scope.pot.fillLevel = 80;
 		else
 			$scope.pot.fillLevel = Math.max(0, $scope.pot.fillLevel - 10);
 	}
