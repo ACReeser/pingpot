@@ -12,6 +12,8 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="pot-status-container">
+				<img src="/content/images/muggy.opt.svg" style="width:100%;height:100%" ng-show="pot.cupsLeft > 0">
+				<img src="/content/images/muggy_sad.opt.svg" style="width:100%;height:100%" ng-show="pot.cupsLeft < 1">
 			</div>
 			<div class="pot" ng-click="dropLevel()" style="cursor:pointer;">
 				<!--img class="pot-gradient" ng-style="{'height':pot.fillLevel+'%','top':(100 - pot.fillLevel)+'%'}" clip-path="url(#coffeeClip)"height="750" width="770"-->
@@ -46,15 +48,37 @@
 
 				</svg>
 			</div>
-			<div class="burner-container">
+			<div class="burner-container" ng-class="burnerClass">
 				<div class="burner"></div>
-				<div class="burner-status"></div>
+				<div class="burner-status" ng-click="cycleBurner()"></div>
 			</div>
 		</div>  
 		<div class="col-md-6">
-			<div class="sugar-container"></div>
-			<div class="coffee-container"></div>
-			<div class="creamer-container"></div>
+			<div class="sugar-container">
+				<h5>SUGAR</h5>
+				<ul>
+					<li><strong>Up Next:</strong></li>
+					<li>Landon</li>
+					<li>John</li>
+					<li>Brian</li>
+				</ul>
+			</div>
+			<div class="coffee-container">
+				<h5>COFFEE</h5>
+				<ul>
+					<li><strong>Up Next:</strong></li>
+					<li>Alex</li>
+					<li>John</li>
+					<li>Ben</li>
+				</ul></div>
+			<div class="creamer-container">
+				<h5>CREAMER</h5>
+				<ul>
+					<li><strong>Up Next:</strong></li>
+					<li>Landon</li>
+					<li>Cory</li>
+					<li>John</li>
+				</ul></div>
 		</div>
 	</div>
 	<svg>
