@@ -11,8 +11,8 @@ angular.module('myApp', [
 		burnerClass: ""
 	};
 	
-	$http.get("/api/infos").then(function(data){
-		$scope.info = angular.fromJson(data.data)[0];
+	$http.get("/api/infos/creamer").then(function(data){
+		$scope.creamer = angular.fromJson(data.data);
 	});
 	
 	function updateFillLevel(){

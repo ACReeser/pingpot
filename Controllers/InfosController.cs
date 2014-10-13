@@ -1,4 +1,5 @@
-﻿using pingpot.Models;
+﻿using pingpot.Classes;
+using pingpot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,26 +11,23 @@ namespace pingpot.Controllers
 {
     public class InfosController : ApiController
     {
-        public static ElevensesModel Elevenses { get; set; }
-
         static InfosController()
         {
-            Elevenses = new ElevensesModel();
         }
 
         // GET api/<controller>
         public HttpResponseMessage Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, Elevenses);
+            return Request.CreateResponse(HttpStatusCode.OK, Cache.Store.ListRange("creamer", 0, -1).Select(c => c.ToString()));
         }
 
         // POST api/<controller>
         [HttpPost]
-        [Route("infos/1")]
-        public HttpResponseMessage FlipElevenses()
+        [Route("infos/creamer")]
+        public HttpResponseMessage GetCreamer()
         {
-            Elevenses.Elevenses = !Elevenses.Elevenses;
-            return Request.CreateResponse(HttpStatusCode.OK, Elevenses);
+            
+            return Request.CreateResponse(HttpStatusCode.OK, Cache.Store.ListRange("creamer", 0, -1));
         }
 
         // PUT api/<controller>/5
