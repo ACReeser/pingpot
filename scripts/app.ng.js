@@ -5,13 +5,43 @@ angular.module('myApp', [
 //  'ngRoute'
 ])
 .controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
-	$scope.hello = 'hello';
-	$http.get("/api/infos").then(function(data){
-		$scope.info = angular.fromJson(data.data)[0];
+	$scope.pot = {
+		cupsLeft: 12,
+		fillLevel: 75,
+		burnerClass: ""
+	};
+	
+	$http.get("/api/infos/creamer").then(function(data){
+		$scope.creamer = angular.fromJson(data.data);
 	});
 	
-	$scope.flip = function(){
-		$http.post("/api/infos/1", {elevenses: $scope.elevenses});
+	function updateFillLevel(){
+		//ceiling is 75;
+		$scope.pot.fillLevel = 7+Math.floor(($scope.pot.cupsLeft*(69/12)));
+	}
+	
+	$scope.dropLevel = function(){
+		if ($scope.pot.cupsLeft == 0)
+			$scope.pot.cupsLeft = 12;
+		else
+			$scope.pot.cupsLeft -= 1;
+		updateFillLevel();
+	}
+	
+	var burnerStates = ["", "hot", "warm"];
+	var currentBurnerState = 0;
+	$scope.cycleBurner = function(){
+		currentBurnerState++;
+		if (currentBurnerState > burnerStates.length -1)
+			currentBurnerState = 0;
+			
+		$scope.burnerClass = burnerStates[currentBurnerState];
+	}
+	
+	var potModal = '<div id="pot-modal"><button class="btn-success" ng-click="hide()"></button></div>';
+	
+	$scope.potModal = function(){
+		//do things
 	};
 }]);
 //.config(['$routeProvider', function($routeProvider) {

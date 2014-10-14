@@ -1,0 +1,92 @@
+.pingpot-logo{
+	position:fixed;
+	left:15px;
+	top:15px;
+	color:black;
+}
+.pot-status-container{
+	margin:20px 0;
+	height:300px;
+	width:400px;
+	border:2px solid black;
+	background-image: url("/content/images/term_small.jpg");
+	background-size: cover;
+	background-position-y: 50%;
+	border-radius: 10px;
+}
+
+.pot{
+	height:450px;
+	width:400px;
+	position:relative;
+}
+.pot-svg{
+	position:absolute;
+	top:0;
+	z-index:2;
+	width:100%;
+	height:100%;
+	margin-left: -38px;
+}
+/*.pot-gradient{
+	position:absolute;
+	top:0;
+	width:100%;
+	height:100%;
+	background: #b57124; /* Old browsers *//*
+	background: -moz-linear-gradient(top,  #b57124 0%, #000000 100%); /* FF3.6+ *//*
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b57124), color-stop(100%,#000000)); /* Chrome,Safari4+ *//*
+	background: -webkit-linear-gradient(top,  #b57124 0%,#000000 100%); /* Chrome10+,Safari5.1+ *//*
+	background: -o-linear-gradient(top,  #b57124 0%,#000000 100%); /* Opera 11.10+ *//*
+	background: -ms-linear-gradient(top,  #b57124 0%,#000000 100%); /* IE10+ *//*
+	background: linear-gradient(to bottom,  #b57124 0%,#000000 100%); /* W3C *//*
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b57124', endColorstr='#000000',GradientType=0 ); /* IE6-9 *//*
+}*/
+
+.burner-container{
+	width:400px;
+	height:80px;
+	position:relative;
+}
+.burner{
+	margin-top:10px;
+	width:100%;
+	height:100%;
+	background-color:black;
+}
+.burner-container.hot>.burner{
+	background-color: red;
+}
+.burner-container.warm>.burner{
+	background-color: orange;
+}
+.burner-status{
+	position: absolute;
+	padding:0 5px;
+	left: 100%;
+	top: 0;
+	color: white;
+	line-height: 76px;
+	font-size: 41px;
+	border: 2px solid black;
+	background-color: black;
+}
+.burner-status:after{
+	content:"COLD";
+}
+.burner-container.hot>.burner-status{
+	color:red;
+	text-shadow: 0px -1px 5px white;
+	border:2px solid red;
+}
+.burner-container.hot>.burner-status:after{
+	content:"HOT";
+}
+.burner-container.warm>.burner-status{
+	color:orange;
+	text-shadow: 0px -1px 5px white;
+	border:2px solid orange;
+}
+.burner-container.warm>.burner-status:after{
+	content:"WARM";
+}

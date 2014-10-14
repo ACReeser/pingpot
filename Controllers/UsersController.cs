@@ -1,4 +1,5 @@
 ﻿using pingpot.Repositories;
+using pingpot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace pingpot.Controllers
     public class UsersController : ApiController
     {
         public UserRepository repository = new UserRepository();
-
         // GET api/<controller>
         public HttpResponseMessage Get()
         {

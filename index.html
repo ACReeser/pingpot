@@ -5,16 +5,92 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/content/css/style.css"/>
 </head>
-<body ng-controller="MainCtrl">
-    <p>
-        <h1>Elevenses</h1>
-        <input type="checkbox" ng-model="info.elevenses" ng-click="flip" />
-    </p>
+<body ng-controller="MainCtrl" class="container">
+	<h1 class="pingpot-logo">pingpot</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="pot-status-container">
+				<img src="/content/images/muggy.opt.svg" style="width:100%;height:100%" ng-show="pot.cupsLeft > 0">
+				<img src="/content/images/muggy_sad.opt.svg" style="width:100%;height:100%" ng-show="pot.cupsLeft < 1">
+			</div>
+			<div class="pot" ng-click="dropLevel()" style="cursor:pointer;">
+				<!--img class="pot-gradient" ng-style="{'height':pot.fillLevel+'%','top':(100 - pot.fillLevel)+'%'}" clip-path="url(#coffeeClip)"height="750" width="770"-->
+				
+				<svg id="svg2" class="pot-svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"viewBox="0 0 770 750">
+
+				 <metadata id="metadata7">
+				  <rdf:RDF>
+				   <cc:Work rdf:about="">
+					<dc:format>image/svg+xml</dc:format>
+					<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+					<dc:title/>
+				   </cc:Work>
+				  </rdf:RDF>
+				 </metadata>
+				 <defs>
+					<linearGradient id="coffee" x1="0%" y1="100%" x2="0%" y2="0%">
+					  <stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+					  <stop offset="{{(pot.fillLevel)+'%'}}" style="stop-color:rgb(115, 64, 2);stop-opacity:1" />
+					  <stop offset="{{(pot.fillLevel)+'%'}}" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+					</linearGradient>
+				 </defs>
+				 <g id="layer1" stroke-linejoin="miter" transform="translate(82.69768,-151.50289)" stroke-linecap="butt">
+				  <path id="path2996" d="m162.86,173.79c30.268,69.046,24.323,117.83,3.5207,179.32-14.021,15.686-32.996,25.039-42.092,42.107l-19.23,355.11c67.232,205.47,558.43,193.69,579.83-5.0508l-10.363-339.96-10.85-18.138s-48.22-15.854-46.467-102.53c1.3073-64.654-2.0203-58.589-2.0203-58.589s7.7745-22.324,23.234-13.132c18.688,11.112,13.132-14.142,13.132-14.142l-21.213-31.315s-332.91,31.837-467.48,6.3222z" stroke="#000" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="6" fill="url(#coffee)" />
+				  <path id="path2998" d="m163.14,173.53c25.845-19.979,416.1-27.427,467.7-6.566" stroke="#000" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="6" fill="none" />
+
+				  <path id="path3000" d="m183.6,220.25s27.779,51.013-5.3033,104.55c-13.797-1.0116-81.045-0.0257-125.51-0.50508,0,0-35.103-5.8084-37.881,18.94-2.7779,24.749-56.821,330.32-56.821,330.32s-31.567,38.638-39.396-10.354c-7.8287-48.992,39.396-452.55,39.396-452.55s1.7678-6.8185,19.951-5.0508c18.183,1.7678,205.57,14.647,205.57,14.647z" stroke="#333" stroke-width="1px" fill="#000)"/>
+
+				  <path id="path2996-7" d="m184.57,223.7s-1.6071,1.2924-4.25,3.5938c7.1566,34.153,4.6147,64.661-3.8125,97.344,0.69261,0.14223,1.3485,0.30209,2.0625,0.4375,240.12,45.537,440.93-4.0406,440.93-4.0406s-0.14221-2.4708,0.11993-2.8016c-1.9414-10.597-1.9628-16.76-1.6774-30.877,0.93014-46-0.51167-56.161-1.4062-58.219-0.51505,0.0747,2.8879-10.297,2.3614-10.215-197.86,30.996-434.33,4.777-434.33,4.777z" stroke="#000" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="6" fill="#f4721b"/>
+
+				 </g>
+
+				</svg>
+			</div>
+			<div class="burner-container" ng-class="burnerClass">
+				<div class="burner"></div>
+				<div class="burner-status" ng-click="cycleBurner()"></div>
+			</div>
+		</div>  
+		<div class="col-md-6">
+			<div class="sugar-container">
+				<h5>SUGAR</h5>
+				<ul>
+					<li><strong>Up Next:</strong></li>
+					<li>Landon</li>
+					<li>John</li>
+					<li>Brian</li>
+				</ul>
+			</div>
+			<div class="coffee-container">
+				<h5>COFFEE</h5>
+				<ul>
+					<li><strong>Up Next:</strong></li>
+					<li>Alex</li>
+					<li>John</li>
+					<li>Ben</li>
+				</ul></div>
+			<div class="creamer-container">
+				<h5>CREAMER</h5>
+				<ul>
+					<li><strong>Up Next:</strong></li>
+					<li>Landon</li>
+					<li>Cory</li>
+					<li>John</li>
+				</ul></div>
+		</div>
+	</div>
+	<svg>
+		<clippath id="coffeeClip">
+		<path d="m162.86,173.79c30.268,69.046,24.323,117.83,3.5207,179.32-14.021,15.686-32.996,25.039-42.092,42.107l-19.23,355.11c67.232,205.47,558.43,193.69,579.83-5.0508l-10.363-339.96-10.85-18.138s-48.22-15.854-46.467-102.53c1.3073-64.654-2.0203-58.589-2.0203-58.589s7.7745-22.324,23.234-13.132c18.688,11.112,13.132-14.142,13.132-14.142l-21.213-31.315s-332.91,31.837-467.48,6.3222z"/>
+		</clippath>
+	</svg>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="scripts/app.ng.js"></script>
 
 </body>
+
 </html>
