@@ -78,6 +78,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\css\style.css" />
+    <Content Include="content\images\coffeepot.opt.svg" />
+    <Content Include="content\images\coffeepot.svg" />
+    <Content Include="content\images\muggy.opt.svg" />
+    <Content Include="content\images\muggy_sad.opt.svg" />
+    <Content Include="content\images\p2.png" />
+    <Content Include="content\images\readme.txt" />
+    <Content Include="content\images\swirl_pattern.png" />
+    <Content Include="content\images\swirl_pattern_sepia.png" />
+    <Content Include="content\images\term_small.jpg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\app.ng.js" />
     <Content Include="index.html" />

@@ -4,15 +4,48 @@
 angular.module('myApp', [
 //  'ngRoute'
 ])
-.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('MainCtrl', ['$scope', '$http', '$timeout',function($scope, $http, $timeout) {
 	$scope.pot = {
 		cupsLeft: 12,
 		fillLevel: 75,
 		burnerClass: ""
 	};
-	
-	$http.get("/api/infos/creamer").then(function(data){
-		$scope.creamer = angular.fromJson(data.data);
+
+	$scope.signalClass = {};
+
+	function signalOne() {
+	    $scope.signalClass.one = true;
+	    $timeout(signalTwo, 250);
+	}
+
+	function signalTwo() {
+	    $scope.signalClass.two = true;
+	    $timeout(function () {
+	        if ($scope.stopSignal) {
+	            $scope.stopSignal = false;
+	            $scope.signalClass = {};
+	        } else {
+	            $scope.signalClass = { active: true };
+	            $timeout(signalOne, 250);
+	        }
+	    }, 250);
+	}
+
+	function get(url) {
+	    $scope.signalClass = { active: true };
+	    $timeout(signalOne, 250);
+	    return $http.get(url).then(function (data) {
+	        $scope.stopSignal = true;
+	        return data;
+	    }, function () {
+	        $scope.stopSignal = true;
+	    });
+	}
+
+
+	get("/api/infos/creamer").then(function (data) {
+        if (data)
+		    $scope.creamer = angular.fromJson(data.data);
 	});
 	
 	function updateFillLevel(){

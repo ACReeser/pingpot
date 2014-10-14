@@ -1,8 +1,14 @@
+body{
+    background-image:url("/content/images/swirl_pattern_sepia.png");
+}
+
 .pingpot-logo{
 	position:fixed;
 	left:15px;
 	top:15px;
 	color:black;
+    font-weight:bold;
+    text-shadow:1px 1px 1px white;
 }
 .pot-status-container{
 	margin:20px 0;
@@ -90,3 +96,69 @@
 .burner-container.warm>.burner-status:after{
 	content:"WARM";
 }
+
+h1{
+    display:inline-block;
+}
+
+.signal-container{
+    position:fixed;
+    left: 54px;
+    top: 9px;
+}
+
+.signal.active {
+	margin-left: -1em;
+	margin-top: 1.8em;
+	/*border-radius: 100%;*/
+	background: black;
+	font-size: 16px;
+	width: 0.5em;
+	height: 0.5em;
+	position: relative;
+    display:inline-block;
+}
+
+.signal.active.one::before {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	top: -1em;
+	left: -.5em;
+	border-radius: 100%;
+	position: absolute;
+	width: 2em;
+	content: "";
+	height: 2em;
+	border-left: 0.5em solid transparent;
+	border-bottom: 0.5em solid transparent;
+	border-top: 0.5em solid transparent;
+	border-right: 0.5em solid black;
+}
+
+.signal.active.two::after {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	top: -2em;
+	left: -1.5em;
+	border-radius: 100%;
+	position: absolute;
+	width: 4em;
+	content: "";
+	height: 4em;
+	border-left: 0.5em solid transparent;
+	border-bottom: 0.5em solid transparent;
+	border-top: 0.5em solid transparent;
+	border-right: 0.5em solid black;
+}
+
+
+
+
+
+
