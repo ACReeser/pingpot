@@ -59,30 +59,24 @@
 			</div>
 		</div>  
 		<div class="col-md-6">
-			<div class="sugar-container well">
+			<div class="sugar-container">
 				<h5>SUGAR</h5>
-				<ul>
-					<li><strong>Up Next:</strong></li>
-					<li>Landon <a href="javascript:void(0);"><i class="fa fa-check"></i></a></li>
-					<li>John</li>
-					<li>Brian</li>
+				<ul class="p-note">
+					<strong>Up Next:</strong>
+					<li ng-repeat="person in supplies.sugar track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'sugar')"><i class="fa fa-check"></i></a></li>
 				</ul>
 			</div>
 			<div class="coffee-container well">
-				<h5>COFFEE</h5>
-				<ul>
-					<li><strong>Up Next:</strong></li>
-					<li>Alex <a href="javascript:void(0);"><i class="fa fa-check"></i></a></li>
-					<li>John</li>
-					<li>Ben</li>
+				<h4>COFFEE</h4>
+				<ul class="p-note">
+					<strong>Up Next:</strong>
+					<li ng-repeat="person in supplies.coffee track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'coffee')"><i class="fa fa-check"></i></a></li>
 				</ul></div>
-			<div class="creamer-container well">
+			<div class="creamer-container">
 				<h5>CREAMER</h5>
-				<ul>
-					<li><strong>Up Next:</strong></li>
-					<li>Landon <a href="javascript:void(0);"><i class="fa fa-check"></i></a></li>
-					<li>Cory</li>
-					<li>John</li>
+				<ul class="p-note">
+					<strong>Up Next:</strong>
+					<li ng-repeat="person in supplies.creamer track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'creamer')"><i class="fa fa-check"></i></a></li>
 				</ul></div>
 		</div>
 	</div>

@@ -157,8 +157,61 @@ h1{
 	border-right: 0.5em solid black;
 }
 
+.sugar-container{
+	background-image: url("/content/images/sugar.svg");
+	background-repeat: no-repeat;
+	height: 300px;
+	padding: 100px 0 0 50px;
+}
+.sugar-container>h5{
+	width: 183px;
+	text-align: center;
+	font-size: 30px;	
+}
+.creamer-container{
+	background-image: url("/content/images/tall_creamer.svg");
+	background-repeat: no-repeat;
+	height: 600px;
+	padding: 50px 0 0 47px;
+}
+.creamer-container>h5{
+	width: 183px;
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 70px;	
+}
 
 
 
+.p-note{
+	background: rgb(255,255,136); /* Old browsers */
+	background: -moz-linear-gradient(-45deg, rgba(255,255,136,1) 77%, rgba(255,255,214,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(77%,rgba(255,255,136,1)), color-stop(100%,rgba(255,255,214,1))); /*Chrome,Safari4+*/
+	background: -webkit-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* IE10+ */
+	background: linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffff88',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	padding:15px;
+	font-family: cursive;
+	font-size:1.3em;
+	color: #000;
+	width:180px;
+	height:150px;
+	padding-left:30px;
+	/*position: fixed; top: 50%; left: 50%; margin-top: -100px; margin-left: -150px;*/
+	-moz-transform: rotate(2deg);
+	-webkit-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+	box-shadow: 0px 4px 6px #333;
+	-moz-box-shadow: 0px 4px 6px #333;
+	-webkit-box-shadow: 0px 4px 6px #333;
+	-webkit-border-bottom-right-radius: 60px 5px;
+	-moz-border-bottom-right-radius: 60px 5px;
+	-o-border-bottom-right-radius: 60px 5px;
+	z-index:2 !important; 
+}
 
 

@@ -5,6 +5,16 @@ angular.module('myApp', [
 //  'ngRoute'
 ])
 .controller('MainCtrl', ['$scope', '$http', '$timeout',function($scope, $http, $timeout) {
+	var debug = window.location.port != 80 && window.location.port != 443;
+
+	if (debug){
+		$scope.supplies = {
+			creamer: ['Alex', 'Landon', 'Ben'],
+			sugar: ['Alex', 'Landon', 'Ben'],
+			coffee: ['Alex', 'Landon', 'Ben'],
+		}
+	}
+
 	$scope.pot = {
 		cupsLeft: 12,
 		fillLevel: 75,
@@ -42,12 +52,19 @@ angular.module('myApp', [
 	    });
 	}
 
+	var previousPollSupply;
+	function pollSupplies(){
+		if (previousPollSupply)
+			$timeout.cancel(previousPollSupply);
 
-	get("/api/infos/creamer").then(function (data) {
-        if (data)
-		    $scope.creamer = angular.fromJson(data.data);
-	});
-	
+		get("/api/supplies").then(function (data) {
+	        if (data)
+			    $scope.supplies = angular.fromJson(data.data);
+		});
+		previousPollSupply = $timeout(pollSupplies, 60000); //every minute
+	}
+	pollSupplies();
+
 	function updateFillLevel(){
 		//ceiling is 75;
 		$scope.pot.fillLevel = 7+Math.floor(($scope.pot.cupsLeft*(69/12)));
@@ -69,7 +86,13 @@ angular.module('myApp', [
 			currentBurnerState = 0;
 			
 		$scope.burnerClass = burnerStates[currentBurnerState];
-	}
+	};
+
+	$scope.cycleSupply = function(person, type){
+		if (confirm(person + " brought in more "+type+"?")){
+			$http.post('/api/supplies/'+type, {'person':person}).success(pollSupplies);
+		}
+	};
 	
 	var potModal = '<div id="pot-modal"><button class="btn-success" ng-click="hide()"></button></div>';
 	
