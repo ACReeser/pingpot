@@ -157,11 +157,31 @@ h1{
 	border-right: 0.5em solid black;
 }
 
+.coffee-container{
+	background-image: url("/content/images/coffeebag.svg");
+	background-repeat: no-repeat;
+	height: 425px;
+	padding: 60px 0 0 20px;
+	position: absolute;
+	width: 229px;
+	top: 270px;
+	left: 290px;
+	z-index: -1;
+}
+.coffee-container>h5{
+	width: 183px;
+	text-align: center;
+	font-size: 30px;	
+}
 .sugar-container{
 	background-image: url("/content/images/sugar.svg");
 	background-repeat: no-repeat;
 	height: 300px;
 	padding: 100px 0 0 50px;
+	position: absolute;
+	top: 578px;
+	width: 286px;
+	left: 220px;
 }
 .sugar-container>h5{
 	width: 183px;
@@ -173,12 +193,17 @@ h1{
 	background-repeat: no-repeat;
 	height: 600px;
 	padding: 50px 0 0 47px;
+	position: absolute;
+	width: 321px;
+	left: 0px;
+	top: 350px;
+	z-index: -1;
 }
 .creamer-container>h5{
 	width: 183px;
 	text-align: center;
 	font-size: 30px;
-	margin-bottom: 70px;	
+	margin-bottom: 70px;
 }
 
 

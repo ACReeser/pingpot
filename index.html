@@ -66,8 +66,8 @@
 					<li ng-repeat="person in supplies.sugar track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'sugar')"><i class="fa fa-check"></i></a></li>
 				</ul>
 			</div>
-			<div class="coffee-container well">
-				<h4>COFFEE</h4>
+			<div class="coffee-container">
+				<h5>COFFEE</h5>
 				<ul class="p-note">
 					<strong>Up Next:</strong>
 					<li ng-repeat="person in supplies.coffee track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'coffee')"><i class="fa fa-check"></i></a></li>
