@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\Heat.cs" />
+    <Compile Include="Controllers\PotController.cs" />
     <Compile Include="Controllers\SuppliesController.cs" />
     <Compile Include="Classes\Cache.cs" />
     <Compile Include="Controllers\UsersController.cs" />

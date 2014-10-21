@@ -17,26 +17,38 @@ namespace pingpot.Classes
         {
             redis = ConnectionMultiplexer.Connect("localhost:6379");
             Store = redis.GetDatabase();
+            NukeBackend();
             if (!Store.KeyExists("userCount"))
             {
                 Bootstrap();
             }
         }
 
+        private static void NukeBackend()
+        {
+            Store.KeyDelete(new RedisKey[]{"userCount", "coffee", "creamer", "sugar", "userCount"});
+        }
+
         private static void Bootstrap()
         {
             AddUserAndQueueAll(1, "Alex");
             AddUserAndQueueAll(2, "Ben");
-            Store.StringIncrement("userCount");
-            Store.StringIncrement("userCount");
+            AddUserAndQueueAll(3, "Brian");
+            AddUserAndQueueAll(4, "Cory");
+            AddUserAndQueueAll(5, "John");
+            AddUserAndQueueAll(6, "Landon");
+
+            Store.StringSet("heat", Heat.Cold.ToString("F"));
+            Store.StringSet("cupsLeft", 0);
         }
 
         private static void AddUserAndQueueAll(int userID, string username)
         {
             Store.StringSet("user_"+userID, username);
-            Store.ListLeftPush("coffee" , username);
-            Store.ListLeftPush("creamer", username);
-            Store.ListLeftPush("sugar"  , username);
+            Store.ListRightPush("coffee" , username);
+            Store.ListRightPush("creamer", username);
+            Store.ListRightPush("sugar", username);
+            Store.StringIncrement("userCount");
         }
 
     }

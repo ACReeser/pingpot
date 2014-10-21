@@ -166,7 +166,6 @@ h1{
 	width: 229px;
 	top: 270px;
 	left: 290px;
-	z-index: -1;
 }
 .coffee-container>h5{
 	width: 183px;
@@ -182,6 +181,7 @@ h1{
 	top: 578px;
 	width: 286px;
 	left: 220px;
+    z-index:2;
 }
 .sugar-container>h5{
 	width: 183px;
@@ -197,7 +197,6 @@ h1{
 	width: 321px;
 	left: 0px;
 	top: 350px;
-	z-index: -1;
 }
 .creamer-container>h5{
 	width: 183px;
@@ -222,7 +221,7 @@ h1{
 	font-size:1.3em;
 	color: #000;
 	width:180px;
-	height:150px;
+	height:200px;
 	padding-left:30px;
 	/*position: fixed; top: 50%; left: 50%; margin-top: -100px; margin-left: -150px;*/
 	-moz-transform: rotate(2deg);
@@ -236,7 +235,7 @@ h1{
 	-webkit-border-bottom-right-radius: 60px 5px;
 	-moz-border-bottom-right-radius: 60px 5px;
 	-o-border-bottom-right-radius: 60px 5px;
-	z-index:2 !important; 
+	z-index:3 !important; 
 }
 
 

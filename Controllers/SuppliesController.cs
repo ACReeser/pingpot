@@ -1,4 +1,5 @@
-﻿using pingpot.Models;
+﻿using pingpot.Classes;
+using pingpot.Models;
 using pingpot.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,51 @@ namespace pingpot.Controllers
     public class SuppliesController : ApiController
     {
         public SupplyRepository supplies = new SupplyRepository();
-                
-        public HttpResponseMessage Get()
+
+        public class SuppliesResponse
         {
-            return Request.CreateResponse(HttpStatusCode.OK, supplies.Get());
+            public object creamer;
+            public object coffee;
+            public object sugar;
+
+            public SuppliesResponse()
+            {
+                this.creamer = Cache.Store.ListRange("creamer", 0, -1).Select(v => (string)v);
+                this.coffee = Cache.Store.ListRange("coffee", 0, -1).Select(v => (string)v);
+                this.sugar = Cache.Store.ListRange("sugar", 0, -1).Select(v => (string)v);
+            }
         }
 
-        public HttpResponseMessage Post(SupplyModel model)
+        public HttpResponseMessage Get()
         {
-            supplies.Add(model);
+            return Request.CreateResponse(HttpStatusCode.OK, new SuppliesResponse());
+        }
 
-            return Request.CreateResponse(HttpStatusCode.OK, model);
+        public HttpResponseMessage Post([FromUri] string supplyType)
+        {
+            if (ValidateType(supplyType))
+            {
+                string upFirst = Cache.Store.ListLeftPop(supplyType);
+                Cache.Store.ListRightPush(supplyType, upFirst);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
+        private bool ValidateType(string supplyType)
+        {
+            switch (supplyType)
+            {
+                case "creamer":
+                case "coffee":
+                case "sugar":
+                    return true;
+                default:
+                    return false;
+            }
         }
     }
 }

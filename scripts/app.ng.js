@@ -61,9 +61,27 @@ angular.module('myApp', [
 	        if (data)
 			    $scope.supplies = angular.fromJson(data.data);
 		});
-		previousPollSupply = $timeout(pollSupplies, 60000); //every minute
+		previousPollSupply = $timeout(pollSupplies, 120000); //every 2 minutes
 	}
 	pollSupplies();
+
+	var previousPollPot;
+	function pollPot() {
+	    if (previousPollPot)
+	        $timeout.cancel(previousPollPot);
+
+	    get("/api/pot").then(function (data) {
+	        if (data) {
+	            var newPot = angular.fromJson(data.data);
+	            $scope.pot.cupsLeft = newPot.cupsLeft;
+	            currentBurnerState = newPot.heat;
+	            updateBurner();
+	            updateFillLevel();
+	        }
+	    });
+	    previousPollPot = $timeout(pollPot, 30000); //every 30s
+	}
+	pollPot();
 
 	function updateFillLevel(){
 		//ceiling is 75;
@@ -76,21 +94,27 @@ angular.module('myApp', [
 		else
 			$scope.pot.cupsLeft -= 1;
 		updateFillLevel();
+		$http.post("api/pot", { cupsLeft: $scope.pot.cupsLeft });
 	}
 	
 	var burnerStates = ["", "hot", "warm"];
 	var currentBurnerState = 0;
+	function updateBurner() {
+	    $scope.burnerClass = burnerStates[currentBurnerState];
+	}
+
 	$scope.cycleBurner = function(){
 		currentBurnerState++;
 		if (currentBurnerState > burnerStates.length -1)
-			currentBurnerState = 0;
-			
-		$scope.burnerClass = burnerStates[currentBurnerState];
+		    currentBurnerState = 0;
+
+		updateBurner();
+		$http.post("api/pot", { heat: currentBurnerState });
 	};
 
 	$scope.cycleSupply = function(person, type){
 		if (confirm(person + " brought in more "+type+"?")){
-			$http.post('/api/supplies/'+type, {'person':person}).success(pollSupplies);
+			$http.post('/api/supplies?supplyType='+type, {'person':person}).success(pollSupplies);
 		}
 	};
 	
