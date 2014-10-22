@@ -10,15 +10,21 @@ body{
     font-weight:bold;
     text-shadow:1px 1px 1px white;
 }
+
+.pot-column{
+    background-image: url("/content/images/coffeetower.svg");
+    background-position: -122px -50px;
+    height: 100%;
+}
 .pot-status-container{
 	margin:20px 0;
 	height:300px;
 	width:400px;
-	border:2px solid black;
+	/*border:2px solid black;
 	background-image: url("/content/images/term_small.jpg");
 	background-size: cover;
 	background-position-y: 50%;
-	border-radius: 10px;
+	border-radius: 10px;*/
 }
 
 .pot{
@@ -32,7 +38,8 @@ body{
 	z-index:2;
 	width:100%;
 	height:100%;
-	margin-left: -38px;
+	margin-left: -44px;
+    margin-top:68px;
 }
 /*.pot-gradient{
 	position:absolute;
@@ -58,23 +65,23 @@ body{
 	margin-top:10px;
 	width:100%;
 	height:100%;
-	background-color:black;
+	/*background-color:black;*/
 }
 .burner-container.hot>.burner{
-	background-color: red;
+	/*background-color: red;*/
 }
 .burner-container.warm>.burner{
-	background-color: orange;
+	/*background-color: orange;*/
 }
 .burner-status{
 	position: absolute;
 	padding:0 5px;
-	left: 100%;
-	top: 0;
+	right: -130px;
+	top: 51px;
 	color: white;
 	line-height: 76px;
 	font-size: 41px;
-	border: 2px solid black;
+	/*border: 2px solid black;*/
 	background-color: black;
 }
 .burner-status:after{
@@ -83,7 +90,7 @@ body{
 .burner-container.hot>.burner-status{
 	color:red;
 	text-shadow: 0px -1px 5px white;
-	border:2px solid red;
+	/*border:2px solid red;*/
 }
 .burner-container.hot>.burner-status:after{
 	content:"HOT";
@@ -91,7 +98,7 @@ body{
 .burner-container.warm>.burner-status{
 	color:orange;
 	text-shadow: 0px -1px 5px white;
-	border:2px solid orange;
+	/*border:2px solid orange;*/
 }
 .burner-container.warm>.burner-status:after{
 	content:"WARM";
