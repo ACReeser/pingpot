@@ -23,6 +23,28 @@ angular.module('myApp', [
 
 	$scope.signalClass = {};
 
+	var signalCounter = 0,
+        signalling = false;
+
+	function setSignal(isOn) {
+	    if (isOn)
+	        signalCounter++;
+	    else
+	        signalCounter--;
+
+	    var newSignalling = (signalCounter > 0);
+
+	    if (!signalling && newSignalling)
+	        startSignalling();
+
+	    signalling = newSignalling;
+	}
+
+	function startSignalling() {
+	    $scope.signalClass = { active: true };
+	    $timeout(signalOne, 250);
+	}
+
 	function signalOne() {
 	    $scope.signalClass.one = true;
 	    $timeout(signalTwo, 250);
@@ -31,8 +53,7 @@ angular.module('myApp', [
 	function signalTwo() {
 	    $scope.signalClass.two = true;
 	    $timeout(function () {
-	        if ($scope.stopSignal) {
-	            $scope.stopSignal = false;
+	        if (!signalling) {
 	            $scope.signalClass = {};
 	        } else {
 	            $scope.signalClass = { active: true };
@@ -42,13 +63,12 @@ angular.module('myApp', [
 	}
 
 	function get(url) {
-	    $scope.signalClass = { active: true };
-	    $timeout(signalOne, 250);
+	    setSignal(true);
 	    return $http.get(url).then(function (data) {
-	        $scope.stopSignal = true;
+	        setSignal(false);
 	        return data;
 	    }, function () {
-	        $scope.stopSignal = true;
+	        setSignal(false);
 	    });
 	}
 
