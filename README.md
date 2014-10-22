@@ -14,4 +14,4 @@ pingpot is a standard asp.net web app
 pingpot is powered by iis express 8
 
 ##postpot integration
-pingpot is meant to interface with the postpot sensor platform
+pingpot is meant to interface with the [postpot](https://github.com/lrogge/PostPot) sensor platform
