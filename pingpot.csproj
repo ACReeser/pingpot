@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\css\style.css" />
+    <Content Include="content\images\coffeepot.ng.svg" />
     <Content Include="content\images\coffeepot.opt.svg" />
     <Content Include="content\images\coffeepot.svg" />
     <Content Include="content\images\muggy.opt.svg" />
