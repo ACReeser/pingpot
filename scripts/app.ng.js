@@ -118,9 +118,11 @@ angular.module('myApp', [
 	}
 	
 	var burnerStates = ["", "hot", "warm"];
+    var burnerColors = {"":"black","hot":"red","warm":"orange"}
 	var currentBurnerState = 0;
 	function updateBurner() {
 	    $scope.burnerClass = burnerStates[currentBurnerState];
+	    $("#svgBurner").css("stroke", burnerColors[$scope.burnerClass]);
 	}
 
 	$scope.cycleBurner = function(){

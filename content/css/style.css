@@ -12,10 +12,19 @@ body{
 }
 
 .pot-column{
-    background-image: url("/content/images/coffeetower.svg");
-    background-position: -122px -50px;
+    /*background-image: url("/content/images/coffeetower.svg");
+    background-position: -122px -50px;*/
     height: 100%;
+    -webkit-user-select:none;
 }
+
+.coffeetower{
+    position: absolute;
+    z-index: -1;
+    left: -125px;
+    top: -49px;
+}
+
 .pot-status-container{
 	margin:20px 0;
 	height:300px;
