@@ -15,7 +15,7 @@ namespace pingpot.Classes
 
         static Cache()
         {
-            redis = ConnectionMultiplexer.Connect("localhost:6379");
+            redis = ConnectionMultiplexer.Connect("127.0.0.1:6379");
             Store = redis.GetDatabase();
             NukeBackend();
             if (!Store.KeyExists("userCount"))
