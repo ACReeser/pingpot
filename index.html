@@ -30,21 +30,22 @@
 			<div class="sugar-container">
 				<h5>SUGAR</h5>
 				<ul class="p-note">
-					<strong>Up Next:</strong>
-					<li ng-repeat="person in supplies.sugar track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'sugar')"><i class="fa fa-check"></i></a></li>
+					<strong>Supplied By:</strong>
+					<li ng-repeat="row in supplies.sugar track by $index">{{row.person}}</li>
+                    <!--<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'sugar')"><i class="fa fa-check"></i></a>-->
 				</ul>
 			</div>
 			<div class="coffee-container">
 				<h5>COFFEE</h5>
 				<ul class="p-note">
-					<strong>Up Next:</strong>
-					<li ng-repeat="person in supplies.coffee track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'coffee')"><i class="fa fa-check"></i></a></li>
+					<strong>Supplied By:</strong>
+					<li ng-repeat="row in supplies.coffee track by $index">{{row.person}}</li>
 				</ul></div>
 			<div class="creamer-container">
 				<h5>CREAMER</h5>
 				<ul class="p-note">
-					<strong>Up Next:</strong>
-					<li ng-repeat="person in supplies.creamer track by $index">{{person}}<a href="javascript:void(0);" ng-show="$index == 0" ng-click="cycleSupply(person,'creamer')"><i class="fa fa-check"></i></a></li>
+					<strong>Supplied By:</strong>
+					<li ng-repeat="row in supplies.creamer track by $index">{{row.person}}</li>
 				</ul></div>
 		</div>
 	</div>
@@ -56,6 +57,7 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.3.5/tabletop.min.js"></script>
     <script src="scripts/app.ng.js"></script>
 
 </body>

@@ -62,6 +62,7 @@ angular.module('myApp', [
 	    }, 250);
 	}
 
+
 	function get(url) {
 	    setSignal(true);
 	    return $http.get(url).then(function (data) {
@@ -72,14 +73,20 @@ angular.module('myApp', [
 	    });
 	}
 
-	var previousPollSupply;
+	var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1V8BhXncxTu0gHfmRFlvSGZnjo-QORDpEDSjjVWRMXYc/pubhtml';
+	var previousPollSupply = null;
 	function pollSupplies(){
 		if (previousPollSupply)
 			$timeout.cancel(previousPollSupply);
 
-		get("/api/supplies").then(function (data) {
-	        if (data)
-			    $scope.supplies = angular.fromJson(data.data);
+		Tabletop.init({
+		    key: public_spreadsheet_url,
+		    callback: function (data, tabletop) {
+		        $scope.supplies.coffee = data.Coffee.elements.reverse();
+		        $scope.supplies.creamer = data.Creamer.elements.reverse();
+		        $scope.supplies.sugar = data.Sugar.elements.reverse();
+		        $scope.$apply();
+		    }
 		});
 		previousPollSupply = $timeout(pollSupplies, 120000); //every 2 minutes
 	}
