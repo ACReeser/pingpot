@@ -1,42 +1,72 @@
 ﻿using pingpot.Classes;
+using pingpot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Threading.Tasks;
+using SQLite;
 
 namespace pingpot.Controllers
 {
     public class PotController : ApiController
     {
-        public class PotResponse
-        {
-            public int? cupsLeft { get; set; }
-            public Nullable<Heat> heat { get; set; }
+        public static bool HasCheckedDB = false;
 
-            public PotResponse()
+        private SQLiteConnection db;
+        private SQLiteAsyncConnection asyncDB;
+        public PotController()
+        {
+            db = new SQLiteConnection(Constants.DBLocation);
+            asyncDB = new SQLiteAsyncConnection(Constants.DBLocation);
+
+            if (!HasCheckedDB)
+                CheckDB();
+        }
+
+        private async void CheckDB()
+        {
+            int tableCount = db.ExecuteScalar<int>("SELECT count(*) FROM sqlite_master WHERE type='table' AND name='PotModel'");
+            if (tableCount < 1)
             {
-                this.cupsLeft = (int)Cache.Store.StringGet("cupsLeft");
-                this.heat = (Heat)Enum.Parse(typeof(Heat), (string)Cache.Store.StringGet("heat"));
+                CreateTable();
             }
+            HasCheckedDB = true;
+        }
+        
+        private void CreateTable()
+        {
+            db.CreateTable<PotModel>();
+            db.Insert(new PotModel()
+            {
+                office = "main",
+            });
         }
 
         // GET api/<controller>
-        public HttpResponseMessage Get()
+        public async Task<HttpResponseMessage> Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, new PotResponse());
+            return Request.CreateResponse(HttpStatusCode.OK, await GetCurrentPot());
+        }
+
+        private async Task<PotModel> GetCurrentPot()
+        {
+            return await asyncDB.Table<PotModel>().Where(p => p.office == "main").FirstOrDefaultAsync();
         }
 
         // POST api/<controller>
-        public HttpResponseMessage Post([FromBody] PotResponse potStatusUpdate)
+        public async Task<HttpResponseMessage> Post([FromBody] PotModel potStatusUpdate, int id)
         {
-            if (potStatusUpdate.cupsLeft.HasValue)
-                Cache.Store.StringSet("cupsLeft", potStatusUpdate.cupsLeft.Value);
-            if (potStatusUpdate.heat.HasValue)
-                Cache.Store.StringSet("heat", potStatusUpdate.heat.Value.ToString("F"));
+            potStatusUpdate.Id = id;
+            return Request.CreateResponse(HttpStatusCode.OK, await SetPot(potStatusUpdate));
+        }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new PotResponse());
+        private async Task<PotModel> SetPot(PotModel potStatusUpdate)
+        {
+            await asyncDB.UpdateAsync(potStatusUpdate);
+            return await GetCurrentPot();
         }
 
     }

@@ -1,50 +1,55 @@
 ﻿using pingpot.Classes;
 using pingpot.Models;
-using pingpot.Repositories;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace pingpot.Controllers
 {
     public class SuppliesController : ApiController
     {
-        public SupplyRepository supplies = new SupplyRepository();
+        
+        public static bool HasCheckedDB = false;
 
-        public class SuppliesResponse
+        private SQLiteAsyncConnection db;
+        public SuppliesController()
         {
-            public object creamer;
-            public object coffee;
-            public object sugar;
+            if (!HasCheckedDB)
+                CheckDB();
+        }
 
-            public SuppliesResponse()
+        private async void CheckDB()
+        {
+            db = new SQLiteAsyncConnection(Constants.DBLocation);
+            if (db.Table<PotModel>() == null)
             {
-                this.creamer = Cache.Store.ListRange("creamer", 0, -1).Select(v => (string)v);
-                this.coffee = Cache.Store.ListRange("coffee", 0, -1).Select(v => (string)v);
-                this.sugar = Cache.Store.ListRange("sugar", 0, -1).Select(v => (string)v);
+                await db.CreateTableAsync<SuppliesModel>();
+                await db.InsertAsync(new SuppliesModel()
+                {
+                    office = "main",
+                });
             }
+            HasCheckedDB = true;
         }
 
         public HttpResponseMessage Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, new SuppliesResponse());
+            return Request.CreateResponse(HttpStatusCode.OK, GetSupplies());
+        }
+
+        private async Task<SuppliesModel> GetSupplies()
+        {
+            return await db.Table<SuppliesModel>().Where(p => p.office == "main").FirstOrDefaultAsync();
         }
 
         public HttpResponseMessage Post([FromUri] string supplyType)
         {
-            if (ValidateType(supplyType))
-            {
-                string upFirst = Cache.Store.ListLeftPop(supplyType);
-                Cache.Store.ListRightPush(supplyType, upFirst);
-                return Request.CreateResponse(HttpStatusCode.OK);
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
 
         private bool ValidateType(string supplyType)
