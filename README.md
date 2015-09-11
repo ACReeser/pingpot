@@ -1,6 +1,6 @@
 pingpot
 =======
-A webserver that reports on the coffee pot's status
+a webserver that reports on the coffee pot's status
 
 ##features
 * innovative "It's Your Turn" supply tracking
@@ -18,3 +18,6 @@ pingpot is powered by iis express 8
 
 ##postpot integration
 pingpot is meant to interface with the [postpot](https://github.com/lrogge/PostPot) sensor platform
+
+##acknowledgements
+pingpot has a guest star mug that is suspiciously like Muggy from the best DLC of a certain wasteland RPG. the pingpot project claims no rights over this guest star. the pingpot project loves the guest star and wants him to stay here with coffee lovers.
