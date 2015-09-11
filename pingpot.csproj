@@ -14,7 +14,7 @@
     <RootNamespace>pingpot</RootNamespace>
     <AssemblyName>pingpot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -86,7 +86,20 @@
     <Content Include="content\images\swirl_pattern.png" />
     <Content Include="content\images\swirl_pattern_sepia.png" />
     <Content Include="content\images\term_small.jpg" />
+    <Content Include="content\vectors\coffee-widget.svg" />
+    <Content Include="content\vectors\creamer-widget.svg" />
+    <Content Include="content\vectors\muggy-widget.svg" />
+    <Content Include="content\vectors\pingpot-logo.svg" />
+    <Content Include="content\vectors\pot-widget.svg" />
+    <Content Include="content\vectors\sugar-widget.svg" />
+    <Content Include="content\vectors\widget-01.svg" />
+    <Content Include="content\vectors\widget-02.svg" />
+    <Content Include="content\vectors\widget-03.svg" />
+    <Content Include="content\vectors\widget-04.svg" />
+    <Content Include="content\vectors\widget-05.svg" />
+    <Content Include="content\vectors\widget-06.svg" />
     <Content Include="Global.asax" />
+    <Content Include="oldIndex.html" />
     <Content Include="scripts\adapter.js" />
     <Content Include="scripts\app.ng.js" />
     <Content Include="index.html" />
@@ -141,7 +154,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>27525</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://devbuild:8080</IISUrl>
+          <IISUrl>http://localhost:8080</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://localhost:80</CustomServerUrl>

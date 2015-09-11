@@ -1,5 +1,5 @@
 body{
-    background-image:url("/content/images/swirl_pattern_sepia.png");
+    /*background-image:url("/content/images/swirl_pattern_sepia.png");*/
 }
 
 .pingpot-logo{
@@ -11,11 +11,11 @@ body{
     text-shadow:1px 1px 1px white;
 }
 
-.pot-column{
-    /*background-image: url("/content/images/coffeetower.svg");
-    background-position: -122px -50px;*/
-    height: 100%;
-    -webkit-user-select:none;
+.no-select{
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
 }
 
 .coffeetower{
@@ -117,111 +117,6 @@ h1{
     display:inline-block;
 }
 
-.signal-container{
-    position:fixed;
-    left: 54px;
-    top: 9px;
-}
-
-.signal.active {
-	margin-left: -1em;
-	margin-top: 1.8em;
-	/*border-radius: 100%;*/
-	background: black;
-	font-size: 16px;
-	width: 0.5em;
-	height: 0.5em;
-	position: relative;
-    display:inline-block;
-}
-
-.signal.active.one::before {
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-	top: -1em;
-	left: -.5em;
-	border-radius: 100%;
-	position: absolute;
-	width: 2em;
-	content: "";
-	height: 2em;
-	border-left: 0.5em solid transparent;
-	border-bottom: 0.5em solid transparent;
-	border-top: 0.5em solid transparent;
-	border-right: 0.5em solid black;
-}
-
-.signal.active.two::after {
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-	top: -2em;
-	left: -1.5em;
-	border-radius: 100%;
-	position: absolute;
-	width: 4em;
-	content: "";
-	height: 4em;
-	border-left: 0.5em solid transparent;
-	border-bottom: 0.5em solid transparent;
-	border-top: 0.5em solid transparent;
-	border-right: 0.5em solid black;
-}
-
-.coffee-container{
-	background-image: url("/content/images/coffeebag.svg");
-	background-repeat: no-repeat;
-	height: 425px;
-	padding: 60px 0 0 20px;
-	position: absolute;
-	width: 229px;
-	top: 270px;
-	left: 290px;
-}
-.coffee-container>h5{
-	width: 183px;
-	text-align: center;
-	font-size: 30px;	
-}
-.sugar-container{
-	background-image: url("/content/images/sugar.svg");
-	background-repeat: no-repeat;
-	height: 300px;
-	padding: 100px 0 0 50px;
-	position: absolute;
-	top: 578px;
-	width: 286px;
-	left: 220px;
-    z-index:2;
-}
-.sugar-container>h5{
-	width: 183px;
-	text-align: center;
-	font-size: 30px;	
-}
-.creamer-container{
-	background-image: url("/content/images/tall_creamer.svg");
-	background-repeat: no-repeat;
-	height: 600px;
-	padding: 50px 0 0 47px;
-	position: absolute;
-	width: 321px;
-	left: 0px;
-	top: 350px;
-}
-.creamer-container>h5{
-	width: 183px;
-	text-align: center;
-	font-size: 30px;
-	margin-bottom: 70px;
-}
-
-
 
 .p-note{
 	background: rgb(255,255,136); /* Old browsers */
@@ -255,3 +150,36 @@ h1{
 }
 
 
+.widget{
+    max-width:400px;
+    position:relative;
+}
+.pot-widget{
+    min-height:500px;
+    text-align:center;
+}
+.logo-widget{
+    min-height:200px;
+    margin:auto;
+    display:block;
+}
+.widget > svg{
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;
+    position:absolute;
+}
+.pot-widget > svg{
+    max-width:600px;
+    margin:auto;
+    display:block;
+}
+ .row-md-330{
+     min-height:330px;
+     max-height:330px;
+ }
+ .muggy-widget{
+     margin-top:50%;
+     min-height:300px;
+ }
