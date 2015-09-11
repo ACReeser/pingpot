@@ -7,6 +7,6 @@ namespace pingpot
 {
     public class Constants
     {
-        public const string DBLocation = "C:\\pingpot.sqlite";
+        public const string DBLocation = "C:\\Users\\cyrious\\Documents\\pingpotpingpot.sqlite";
     }
 }
