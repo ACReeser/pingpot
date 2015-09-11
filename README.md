@@ -7,6 +7,9 @@ A webserver that reports on the coffee pot's status
 * simple "Hot Or Not" temperature tracking
 * best-in-class "About So Many Cups" coffee-pot fullness meter
 
+##screenshot
+![pingpot screenshot](http://i.imgur.com/pGnqzO0.png)
+
 ##about
 pingpot is a standard asp.net web app
 
